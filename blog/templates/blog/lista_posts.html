@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+{% block title %}Entradas - DevBlog{% endblock %}
+
+{% block content %}
+  <h1 class="mb-4">Últimas entradas</h1>
+  {% for post in posts %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <h3 class="card-title">
+          <a href="{% url 'detalle_post' post.pk %}">{{ post.titulo }}</a>
+        </h3>
+        <p class="card-text text-muted">
+          Publicado el {{ post.fecha_publicacion|date:"d M Y" }}
+        </p>
+      </div>
+    </div>
+  {% empty %}
+    <p>No hay entradas disponibles.</p>
+  {% endfor %}
+{% endblock %}
